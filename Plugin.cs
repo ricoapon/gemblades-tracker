@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
 
@@ -7,6 +8,8 @@ namespace GembladesTracker;
 [BepInPlugin("com.ricoapon.gemblades-tracker", "Gemblades Tracker", "1.0.0")]
 public class Plugin : BaseUnityPlugin
 {
+    internal static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker");
+
     private void Awake()
     {
         var harmony = new Harmony("com.ricoapon.gemblades-tracker");
@@ -21,7 +24,9 @@ static class ShopCardHolderContinuePurchasePatch
 {
     static void Postfix(Card card, Persona persona)
     {
-        BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker").LogInfo( $"Purchased: {persona.personaName}");
+        Plugin.Log.LogInfo(
+            $"{(persona.isFamiliar ? "Purchased Card" : "Purchased Monster")}: {persona.personaName}"
+        );
     }
 }
 
@@ -33,7 +38,7 @@ static class PlayerManagerStartPatch
 {
     static void Postfix(ref int ___currentTurn)
     {
-        BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker").LogInfo($"Turn started: {___currentTurn}");
+        Plugin.Log.LogInfo($"Turn started: {___currentTurn}");
     }
 }
 
@@ -42,7 +47,7 @@ static class PlayerManagerStartTurnPatch
 {
     static void Postfix(ref int ___currentTurn)
     {
-        BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker").LogInfo($"Start turn {___currentTurn}");
+        Plugin.Log.LogInfo($"Start turn {___currentTurn}");
     }
 }
 
@@ -51,7 +56,7 @@ static class HorizontalCardHolderBanishSpecificCardPatch
 {
     static void Postfix(Card card)
     {
-        BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker").LogInfo( $"Removed from deck: {card.persona.personaName}");
+        Plugin.Log.LogInfo( $"Removed from deck: {card.persona.personaName}");
     }
 }
 
@@ -64,6 +69,6 @@ public static class CardPolymorphToPersonaPatch
         string oldName = __instance?.persona?.personaName ?? "<none>";
         string newName = templatePersona?.personaName ?? "<none>";
 
-        BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker").LogInfo($"Card evolved: '{oldName}' -> '{newName}'");
+        Plugin.Log.LogInfo($"Card evolved: '{oldName}' -> '{newName}'");
     }
 }
