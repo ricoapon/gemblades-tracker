@@ -26,8 +26,9 @@ static class ShopCardHolderContinuePurchasePatch
 {
     static void Postfix(Card card, Persona persona)
     {
+        // Boss has a separate boolean, but it is also considered an enemy.
         Plugin.Log.LogInfo(
-            $"{(persona.isFamiliar ? "Purchased Card" : "Purchased Monster")}: {persona.personaName}"
+            $"{(persona.isEnemy ? "Purchased Enemy" : "Purchased Card")}: {persona.personaName}"
         );
     }
 }
