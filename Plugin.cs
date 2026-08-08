@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using BepInEx;
 using BepInEx.Logging;
@@ -21,19 +22,19 @@ public class Plugin : BaseUnityPlugin
         var harmony = new Harmony("com.ricoapon.gemblades-tracker");
         harmony.PatchAll();
 
-        Logger.LogInfo($"Gemblades Tracker loaded! GameVersion='{Application.version}'");
+        Logger.LogInfo($"Gemblades Tracker loaded! GameVersion='{Application.version}', UUID='{Guid.NewGuid()}'");
     }
 }
 
-// For some reason, StartTurn only triggers from turn 2 and afterwards. This method is triggered when you open the
-// main menu. This is good enough I guess. When you exit to main menu, it shows this. Could function as a
-// "the game stopped" message as well.
-[HarmonyPatch(typeof(PlayerManager), "Start")]
-static class PlayerManagerStartPatch
+// For some reason, StartTurn only triggers from turn 2 and afterwards. So we add this method for turn 1.
+[HarmonyPatch(typeof(PlayerManager), "StartRunTransitionCoroutine")]
+static class PlayerManagerStartRunTransitionCoroutinePatch
 {
-    static void Postfix(PlayerManager __instance, ref int ___currentTurn)
+    static void Postfix(PlayerManager __instance, int difficultySnapshot, int runLengthSnapshot)
     {
-        Plugin.Log.LogInfo($"Turn started: {___currentTurn} with deck size {__instance.cardHolder.GetTotalDeckCount()}");
+        // Length should always be 30, but I log it anyway just in case it changes in the future.
+        Plugin.Log.LogInfo($"Game started at '{DateTime.UtcNow}'. Difficulty={difficultySnapshot}, Length={runLengthSnapshot}, requiredVotersForVictory={__instance.requiredVotersForVictory}");
+        Plugin.Log.LogInfo($"Turn started: 1 with deck size {__instance.cardHolder.GetTotalDeckCount()}");
     }
 }
 
@@ -42,6 +43,10 @@ static class PlayerManagerStartTurnPatch
 {
     static void Postfix(PlayerManager __instance, ref int ___currentTurn)
     {
+        if (___currentTurn == 1)
+        {
+            Plugin.Log.LogInfo($"Game started at {DateTime.UtcNow}");
+        }
         Plugin.Log.LogInfo($"Turn started: {___currentTurn} with deck size {__instance.cardHolder.GetTotalDeckCount()}");
     }
 }
