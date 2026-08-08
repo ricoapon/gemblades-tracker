@@ -8,3 +8,7 @@ To build this plugin, create a directory `References` with the following files:
 Run `dotnet build` to create the DLL. The output file is `bin/Debug/net472/GembladesTracker.dll`.
 
 If BepInEx is installed properly in the game, copy this output file into the plugins directory.
+
+# Built version
+
+See `GembladesTracker.dll` that was built against version 1.0.1.
