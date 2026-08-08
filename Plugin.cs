@@ -78,3 +78,21 @@ public static class PlayerManagerSpendResourcesPatch
         Plugin.Log.LogInfo($"Money: {__instance.money}, Power: {__instance.power}, Fame: {__instance.fame}, Voters: {__instance.voters}");
     }
 }
+
+// Log win or lose message.
+[HarmonyPatch(typeof(PlayerManager), "VictoryTransitionCoroutine")]
+public static class PlayerManagerVictoryTransitionCoroutinePatch
+{
+    static void Postfix(PlayerManager __instance)
+    {
+        Plugin.Log.LogInfo($"Game won in {__instance.GetCurrentTurn()} turns");
+    }
+}
+[HarmonyPatch(typeof(PlayerManager), "GameOverTransitionCoroutine")]
+public static class PlayerManagerGameOverTransitionCoroutinePatch
+{
+    static void Postfix(PlayerManager __instance)
+    {
+        Plugin.Log.LogInfo($"Game lost in {__instance.GetCurrentTurn()} turns");
+    }
+}
