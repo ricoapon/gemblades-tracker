@@ -15,26 +15,49 @@ namespace GembladesTracker;
 [BepInPlugin("com.ricoapon.gemblades-tracker", "Gemblades Tracker", "1.0.0")]
 public class Plugin : BaseUnityPlugin
 {
-    internal static readonly ManualLogSource Log = BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker");
+    internal static readonly ManualLogSource Log =
+        BepInEx.Logging.Logger.CreateLogSource("Gemblades Tracker");
+
+    internal static void LogEvent(string eventName, params string[] fields)
+    {
+        Log.LogInfo(
+            $"[{DateTime.UtcNow:O}] [{eventName}] {string.Join(" ", fields)}"
+        );
+    }
 
     private void Awake()
     {
         var harmony = new Harmony("com.ricoapon.gemblades-tracker");
         harmony.PatchAll();
 
-        Logger.LogInfo($"Gemblades Tracker loaded! GameVersion='{Application.version}', UUID='{Guid.NewGuid()}'");
+        LogEvent(
+            "TrackerLoaded",
+            $"GameVersion={Application.version}",
+            $"RunID={Guid.NewGuid()}"
+        );
     }
 }
 
-// For some reason, StartTurn only triggers from turn 2 and afterwards. So we add this method for turn 1.
+// For some reason, StartTurn only triggers from turn 2 and afterwards.
+// So we add this method for turn 1.
 [HarmonyPatch(typeof(PlayerManager), "StartRunTransitionCoroutine")]
 static class PlayerManagerStartRunTransitionCoroutinePatch
 {
     static void Postfix(PlayerManager __instance, int difficultySnapshot, int runLengthSnapshot)
     {
-        // Length should always be 30, but I log it anyway just in case it changes in the future.
-        Plugin.Log.LogInfo($"Game started at '{DateTime.UtcNow}'. Difficulty={difficultySnapshot}, Length={runLengthSnapshot}, requiredVotersForVictory={__instance.requiredVotersForVictory}");
-        Plugin.Log.LogInfo($"Turn started: 1 with deck size {__instance.cardHolder.GetTotalDeckCount()}");
+        // Length should always be 30, but log it anyway in case it changes.
+        Plugin.LogEvent(
+            "GameStarted",
+            $"Difficulty={difficultySnapshot}",
+            $"Length={runLengthSnapshot}",
+            $"RequiredVoters={__instance.requiredVotersForVictory}"
+        );
+
+        Plugin.LogEvent(
+            "TurnStarted",
+            $"Turn={1}",
+            $"DeckSize={__instance.cardHolder.GetTotalDeckCount()}"
+        );
     }
 }
 
@@ -43,15 +66,15 @@ static class PlayerManagerStartTurnPatch
 {
     static void Postfix(PlayerManager __instance, ref int ___currentTurn)
     {
-        if (___currentTurn == 1)
-        {
-            Plugin.Log.LogInfo($"Game started at {DateTime.UtcNow}");
-        }
-        Plugin.Log.LogInfo($"Turn started: {___currentTurn} with deck size {__instance.cardHolder.GetTotalDeckCount()}");
+        Plugin.LogEvent(
+            "TurnStarted",
+            $"Turn={___currentTurn}",
+            $"DeckSize={__instance.cardHolder.GetTotalDeckCount()}"
+        );
     }
 }
 
-// Covers all the increase/decrease methods that are relevant. However, SpendResources also updates these values.
+// Covers all the increase/decrease methods that are relevant. SpendResources also updates these values.
 // I decided to only cover the actual values themselves. Seems easier to store than a list of delta's, which the
 // tool reading this can also determine for itself. And less prone to bugs in case we miss a method.
 // Voters = gems. Fame = no clue?
@@ -72,32 +95,58 @@ static class PlayerManagerResourcePatch
 
     static void Postfix(PlayerManager __instance, MethodBase __originalMethod, int amount)
     {
-        Plugin.Log.LogInfo($"Money: {__instance.money}, Power: {__instance.power}, Fame: {__instance.fame}, Voters: {__instance.voters}");
-    }
-}
-[HarmonyPatch(typeof(PlayerManager), "SpendResources")]
-public static class PlayerManagerSpendResourcesPatch
-{
-    static void Prefix(PlayerManager __instance, int moneyCost, int fameCost, int powerCost, int votersCost)
-    {
-        Plugin.Log.LogInfo($"Money: {__instance.money}, Power: {__instance.power}, Fame: {__instance.fame}, Voters: {__instance.voters}");
+        Plugin.LogEvent(
+            "ResourcesChanged",
+            $"Money={__instance.money}",
+            $"Power={__instance.power}",
+            $"Fame={__instance.fame}",
+            $"Voters={__instance.voters}"
+        );
     }
 }
 
-// Log win or lose message.
+[HarmonyPatch(typeof(PlayerManager), "SpendResources")]
+public static class PlayerManagerSpendResourcesPatch
+{
+    static void Prefix(
+        PlayerManager __instance,
+        int moneyCost,
+        int fameCost,
+        int powerCost,
+        int votersCost)
+    {
+        Plugin.LogEvent(
+            "ResourcesChanged",
+            $"Money={__instance.money}",
+            $"Power={__instance.power}",
+            $"Fame={__instance.fame}",
+            $"Voters={__instance.voters}"
+        );
+    }
+}
+
 [HarmonyPatch(typeof(PlayerManager), "VictoryTransitionCoroutine")]
 public static class PlayerManagerVictoryTransitionCoroutinePatch
 {
     static void Postfix(PlayerManager __instance)
     {
-        Plugin.Log.LogInfo($"Game won in {__instance.GetCurrentTurn()} turns");
+        Plugin.LogEvent(
+            "GameEnd",
+            "Won=true",
+            $"Turns={__instance.GetCurrentTurn()}"
+        );
     }
 }
+
 [HarmonyPatch(typeof(PlayerManager), "GameOverTransitionCoroutine")]
 public static class PlayerManagerGameOverTransitionCoroutinePatch
 {
     static void Postfix(PlayerManager __instance)
     {
-        Plugin.Log.LogInfo($"Game lost in {__instance.GetCurrentTurn()} turns");
+        Plugin.LogEvent(
+            "GameEnd",
+            "Won=false",
+            $"Turns={__instance.GetCurrentTurn()}"
+        );
     }
 }
