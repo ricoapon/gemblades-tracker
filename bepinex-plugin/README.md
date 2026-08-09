@@ -1,7 +1,7 @@
 # gemblades-tracker-plugin
 
-This is a BepInEx plugin to be able to track games of [Gemblades](https://store.steampowered.com/app/3165590/Gemblades/).
-All output is logged to the BepInEx logfile and can be gathered using other apps.
+This is a BepInEx plugin that creates data when the game is running. All output is logged to the BepInEx logfile and can
+be gathered using other apps.
 
 ## Logging
 
@@ -30,7 +30,8 @@ The possible events are:
 To build this plugin, create a directory `References` with the following files:
 
 * `0Harmony.dll` and `BepInEx.dll` from BepInEx.
-* `Assembly-CSharp.dll`, `UnityEngine.dll`, `UnityEngine.CoreModule.dll` from `Steam\steamapps\common\Gemblades\Gemblades_Data\Managed`.
+* `Assembly-CSharp.dll`, `UnityEngine.dll`, `UnityEngine.CoreModule.dll` from
+  `Steam\steamapps\common\Gemblades\Gemblades_Data\Managed`.
 
 Run `dotnet build` to create the DLL. The output file is `bin/Debug/net472/GembladesTracker.dll`.
 
