@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    application
 }
 
 group = "nl.ricoapon"
@@ -21,12 +22,21 @@ dependencies {
     // so no separate database module is needed.
     implementation("org.flywaydb:flyway-core:13.2.0")
 
+    // JFreeChart for the per-turn/statistics charts in the Swing viewer.
+    // Self-contained (no transitive dependencies).
+    implementation("org.jfree:jfreechart:1.5.5")
+
     // Simple logging.
     runtimeOnly("org.slf4j:slf4j-simple:2.0.18")
 
     testImplementation(platform("org.junit:junit-bom:6.0.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+application {
+    // The Swing viewer is the runnable entry point (./gradlew run).
+    mainClass = "nl.ricoapon.gui.ViewerApp"
 }
 
 tasks.test {
