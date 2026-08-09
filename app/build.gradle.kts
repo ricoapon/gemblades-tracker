@@ -35,8 +35,8 @@ dependencies {
 }
 
 application {
-    // The Swing viewer is the runnable entry point (./gradlew run).
-    mainClass = "nl.ricoapon.gui.ViewerApp"
+    // Main starts the log file tracker and the Swing viewer (./gradlew run).
+    mainClass = "nl.ricoapon.Main"
 }
 
 tasks.test {

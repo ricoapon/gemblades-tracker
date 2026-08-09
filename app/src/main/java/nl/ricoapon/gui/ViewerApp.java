@@ -8,13 +8,14 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -37,31 +38,23 @@ public final class ViewerApp {
         this.gamesPanel = new GamesPanel(database);
     }
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception ignored) {
-            // Fall back to the default look and feel.
-        }
-        SwingUtilities.invokeLater(ViewerApp::launch);
+    /**
+     * Shows the viewer for the given database on the Swing event dispatch thread. {@code onClose} is
+     * run when the window is closed, allowing the caller to shut down background work such as the log
+     * file tracker.
+     */
+    public static void launch(Database database, Runnable onClose) {
+        SwingUtilities.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (Exception ignored) {
+                // Fall back to the default look and feel.
+            }
+            new ViewerApp(database).show(onClose);
+        });
     }
 
-    private static void launch() {
-        Database database;
-        try {
-            database = new Database(Constants.DB_FILE_PATH);
-        } catch (RuntimeException e) {
-            JOptionPane.showMessageDialog(null,
-                    "Could not open the database at:\n" + Constants.DB_FILE_PATH
-                            + "\n\n" + e.getMessage()
-                            + "\n\nThe tracker may not have created it yet.",
-                    "Gemblades Tracker", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        new ViewerApp(database).show();
-    }
-
-    private void show() {
+    private void show(Runnable onClose) {
         JButton refresh = new JButton("Refresh");
         refresh.addActionListener(event -> reload());
 
@@ -80,6 +73,12 @@ public final class ViewerApp {
 
         JFrame frame = new JFrame("Gemblades Tracker");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent event) {
+                onClose.run();
+            }
+        });
         frame.setContentPane(content);
         frame.setSize(1000, 700);
         frame.setLocationRelativeTo(null);

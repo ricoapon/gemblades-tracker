@@ -3,7 +3,7 @@ package nl.ricoapon;
 import java.nio.file.Path;
 
 public class Constants {
-    private final static Path LOG_FILE_PATH = Path.of("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Gemblades\\BepInEx\\LogOutput.log");
+    public final static Path LOG_FILE_PATH = Path.of("C:\\Program Files (x86)\\Steam\\steamapps\\common\\Gemblades\\BepInEx\\LogOutput.log");
 
     /**
      * Location of the local SQLite database, kept in a dedicated folder under the user's home

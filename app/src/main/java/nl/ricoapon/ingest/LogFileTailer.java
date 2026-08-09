@@ -1,4 +1,4 @@
-package nl.ricoapon;
+package nl.ricoapon.ingest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
