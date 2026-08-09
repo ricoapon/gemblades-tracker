@@ -1,0 +1,277 @@
+[Message:   BepInEx] BepInEx 5.4.23.5 - Gemblades (8/7/2026 7:53:35 PM)
+[Info   :   BepInEx] Running under Unity v6000.3.7.6909634
+[Info   :   BepInEx] CLR runtime version: 4.0.30319.42000
+[Info   :   BepInEx] Supports SRE: True
+[Info   :   BepInEx] System platform: Bits64, Windows
+[Message:   BepInEx] Preloader started
+[Info   :   BepInEx] Loaded 1 patcher method from [BepInEx.Preloader 5.4.23.5]
+[Info   :   BepInEx] 1 patcher plugin loaded
+[Info   :   BepInEx] Patching [UnityEngine.CoreModule] with [BepInEx.Chainloader]
+[Message:   BepInEx] Preloader finished
+[Message:   BepInEx] Chainloader ready
+[Message:   BepInEx] Chainloader started
+[Info   :   BepInEx] 1 plugin to load
+[Info   :   BepInEx] Loading [Gemblades Tracker 1.0.0]
+[Info   :Gemblades Tracker] [2026-08-08T22:11:51.8407274Z] [TrackerLoaded] GameVersion=1 RunID=79467be7-476b-4ba7-9d08-d66c1eee54c6
+[Message:   BepInEx] Chainloader startup complete
+[Info   :Gemblades Tracker] [2026-08-08T22:12:19.8679093Z] [GameStarted] Difficulty=1 Length=30 RequiredVoters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:12:19.8690215Z] [TurnStarted] Turn=1 DeckSize=12
+[Info   :Gemblades Tracker] [2026-08-08T22:12:24.3555880Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=0
+[Info   :Gemblades Tracker] [2026-08-08T22:12:24.4685225Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=0
+[Info   :Gemblades Tracker] [2026-08-08T22:12:24.5686848Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=0
+[Info   :Gemblades Tracker] [2026-08-08T22:12:24.6851750Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=0
+[Info   :Gemblades Tracker] [2026-08-08T22:12:24.8022392Z] [ResourcesChanged] Money=5 Power=0 Fame=0 Voters=0
+[Info   :Gemblades Tracker] [2026-08-08T22:12:25.4857686Z] [ResourcesChanged] Money=5 Power=0 Fame=0 Voters=0
+[Info   :Gemblades Tracker] [2026-08-08T22:12:25.4888104Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:27.2856282Z] [TurnStarted] Turn=2 DeckSize=13
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.1509228Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.2527950Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.3685724Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.4692028Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.5691716Z] [ResourcesChanged] Money=5 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.7998933Z] [ResourcesChanged] Money=5 Power=0 Fame=0 Voters=2
+[Info   :Gemblades Tracker] [2026-08-08T22:12:28.7998933Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:30.7589319Z] [TurnStarted] Turn=3 DeckSize=14
+[Info   :Gemblades Tracker] [2026-08-08T22:12:31.9830944Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:32.1021235Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:32.2181611Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:32.3356261Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:32.4515483Z] [ResourcesChanged] Money=5 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:33.8172212Z] [ResourcesChanged] Money=5 Power=0 Fame=0 Voters=3
+[Info   :Gemblades Tracker] [2026-08-08T22:12:33.8172212Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=5
+[Info   :Gemblades Tracker] [2026-08-08T22:12:35.8686172Z] [TurnStarted] Turn=4 DeckSize=15
+[Info   :Gemblades Tracker] [2026-08-08T22:12:37.6523696Z] [ResourcesChanged] Money=0 Power=0 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:42.0514181Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:42.1517757Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:42.2675998Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:43.1512953Z] [ResourcesChanged] Money=3 Power=2 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:44.3510443Z] [ResourcesChanged] Money=4 Power=2 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:46.7345295Z] [ResourcesChanged] Money=4 Power=2 Fame=0 Voters=6
+[Info   :Gemblades Tracker] [2026-08-08T22:12:46.7345295Z] [ResourcesChanged] Money=0 Power=2 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:49.0595739Z] [TurnStarted] Turn=5 DeckSize=16
+[Info   :Gemblades Tracker] [2026-08-08T22:12:51.4677096Z] [ResourcesChanged] Money=0 Power=2 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:52.1348720Z] [ResourcesChanged] Money=1 Power=2 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:53.2686601Z] [ResourcesChanged] Money=2 Power=2 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:53.4509412Z] [ResourcesChanged] Money=3 Power=2 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:55.6636793Z] [ResourcesChanged] Money=0 Power=1 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:55.6646873Z] [TurnStarted] Turn=6 DeckSize=15
+[Info   :Gemblades Tracker] [2026-08-08T22:12:57.5177957Z] [ResourcesChanged] Money=0 Power=3 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:58.7350091Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:59.0854675Z] [ResourcesChanged] Money=1 Power=6 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:59.1675840Z] [ResourcesChanged] Money=2 Power=6 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:59.5680689Z] [ResourcesChanged] Money=3 Power=6 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:12:59.8346330Z] [ResourcesChanged] Money=4 Power=6 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:13:01.2507701Z] [ResourcesChanged] Money=4 Power=6 Fame=0 Voters=8
+[Info   :Gemblades Tracker] [2026-08-08T22:13:01.2621288Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=13
+[Info   :Gemblades Tracker] [2026-08-08T22:13:01.4025986Z] [ResourcesChanged] Money=4 Power=2 Fame=0 Voters=13
+[Info   :Gemblades Tracker] [2026-08-08T22:13:01.4031159Z] [ResourcesChanged] Money=6 Power=2 Fame=0 Voters=13
+[Info   :Gemblades Tracker] [2026-08-08T22:13:04.0007215Z] [ResourcesChanged] Money=6 Power=2 Fame=0 Voters=13
+[Info   :Gemblades Tracker] [2026-08-08T22:13:04.0007215Z] [ResourcesChanged] Money=2 Power=2 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:04.7170898Z] [ResourcesChanged] Money=2 Power=2 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:04.7280519Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:04.7280519Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=15
+[Info   :Gemblades Tracker] [2026-08-08T22:13:04.8856808Z] [ResourcesChanged] Money=3 Power=0 Fame=0 Voters=13
+[Info   :Gemblades Tracker] [2026-08-08T22:13:06.5333969Z] [ResourcesChanged] Money=0 Power=1 Fame=0 Voters=13
+[Info   :Gemblades Tracker] [2026-08-08T22:13:06.5333969Z] [TurnStarted] Turn=7 DeckSize=16
+[Info   :Gemblades Tracker] [2026-08-08T22:13:07.8509675Z] [ResourcesChanged] Money=0 Power=1 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:12.1862524Z] [ResourcesChanged] Money=0 Power=1 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:15.7675135Z] [ResourcesChanged] Money=0 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:16.5338575Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:20.0516838Z] [ResourcesChanged] Money=2 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:20.6011837Z] [ResourcesChanged] Money=3 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:21.1173651Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:22.8170298Z] [ResourcesChanged] Money=5 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:23.3332262Z] [ResourcesChanged] Money=5 Power=3 Fame=0 Voters=11
+[Info   :Gemblades Tracker] [2026-08-08T22:13:23.3347946Z] [ResourcesChanged] Money=0 Power=3 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:24.8675198Z] [ResourcesChanged] Money=0 Power=5 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:35.1006397Z] [ResourcesChanged] Money=1 Power=5 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:35.7688592Z] [ResourcesChanged] Money=1 Power=12 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:36.9178619Z] [ResourcesChanged] Money=1 Power=12 Fame=0 Voters=14
+[Info   :Gemblades Tracker] [2026-08-08T22:13:36.9279372Z] [ResourcesChanged] Money=1 Power=6 Fame=0 Voters=20
+[Info   :Gemblades Tracker] [2026-08-08T22:13:44.1509111Z] [ResourcesChanged] Money=1 Power=9 Fame=0 Voters=20
+[Info   :Gemblades Tracker] [2026-08-08T22:13:50.9174954Z] [ResourcesChanged] Money=1 Power=9 Fame=0 Voters=20
+[Info   :Gemblades Tracker] [2026-08-08T22:13:50.9282377Z] [ResourcesChanged] Money=2 Power=7 Fame=0 Voters=20
+[Info   :Gemblades Tracker] [2026-08-08T22:13:50.9282377Z] [ResourcesChanged] Money=2 Power=7 Fame=0 Voters=21
+[Info   :Gemblades Tracker] [2026-08-08T22:13:55.3016213Z] [ResourcesChanged] Money=2 Power=7 Fame=0 Voters=21
+[Info   :Gemblades Tracker] [2026-08-08T22:13:55.3016213Z] [ResourcesChanged] Money=0 Power=7 Fame=0 Voters=23
+[Info   :Gemblades Tracker] [2026-08-08T22:14:00.0513689Z] [ResourcesChanged] Money=0 Power=7 Fame=0 Voters=23
+[Info   :Gemblades Tracker] [2026-08-08T22:14:00.0595682Z] [ResourcesChanged] Money=0 Power=3 Fame=0 Voters=26
+[Info   :Gemblades Tracker] [2026-08-08T22:14:00.2020033Z] [ResourcesChanged] Money=0 Power=3 Fame=0 Voters=28
+[Info   :Gemblades Tracker] [2026-08-08T22:14:02.5430977Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=28
+[Info   :Gemblades Tracker] [2026-08-08T22:14:02.5446728Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=31
+[Info   :Gemblades Tracker] [2026-08-08T22:14:05.1176328Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=31
+[Info   :Gemblades Tracker] [2026-08-08T22:14:05.1286288Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=31
+[Info   :Gemblades Tracker] [2026-08-08T22:14:05.1296294Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:08.6673568Z] [ResourcesChanged] Money=2 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:09.3683451Z] [ResourcesChanged] Money=3 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:12.8320575Z] [ResourcesChanged] Money=0 Power=1 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:12.8330679Z] [TurnStarted] Turn=8 DeckSize=15
+[Info   :Gemblades Tracker] [2026-08-08T22:14:15.7179179Z] [ResourcesChanged] Money=0 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:16.8347075Z] [ResourcesChanged] Money=1 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:17.6346339Z] [ResourcesChanged] Money=2 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:18.0181902Z] [ResourcesChanged] Money=3 Power=3 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:19.9990845Z] [ResourcesChanged] Money=0 Power=1 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:19.9990845Z] [TurnStarted] Turn=9 DeckSize=14
+[Info   :Gemblades Tracker] [2026-08-08T22:14:23.6847812Z] [ResourcesChanged] Money=0 Power=4 Fame=0 Voters=32
+[Info   :Gemblades Tracker] [2026-08-08T22:14:26.7538022Z] [ResourcesChanged] Money=0 Power=4 Fame=0 Voters=29
+[Info   :Gemblades Tracker] [2026-08-08T22:14:29.1348661Z] [ResourcesChanged] Money=0 Power=4 Fame=0 Voters=30
+[Info   :Gemblades Tracker] [2026-08-08T22:14:37.9345319Z] [ResourcesChanged] Money=1 Power=4 Fame=0 Voters=30
+[Info   :Gemblades Tracker] [2026-08-08T22:14:38.5681978Z] [ResourcesChanged] Money=2 Power=4 Fame=0 Voters=30
+[Info   :Gemblades Tracker] [2026-08-08T22:14:39.1177074Z] [ResourcesChanged] Money=3 Power=4 Fame=0 Voters=30
+[Info   :Gemblades Tracker] [2026-08-08T22:14:39.8541169Z] [ResourcesChanged] Money=3 Power=10 Fame=0 Voters=30
+[Info   :Gemblades Tracker] [2026-08-08T22:14:48.9347907Z] [ResourcesChanged] Money=3 Power=10 Fame=0 Voters=30
+[Info   :Gemblades Tracker] [2026-08-08T22:14:48.9400182Z] [ResourcesChanged] Money=3 Power=5 Fame=0 Voters=31
+[Info   :Gemblades Tracker] [2026-08-08T22:14:48.9457485Z] [ResourcesChanged] Money=3 Power=5 Fame=0 Voters=33
+[Info   :Gemblades Tracker] [2026-08-08T22:15:07.5518544Z] [ResourcesChanged] Money=4 Power=5 Fame=0 Voters=33
+[Info   :Gemblades Tracker] [2026-08-08T22:15:07.5518544Z] [ResourcesChanged] Money=4 Power=5 Fame=0 Voters=36
+[Info   :Gemblades Tracker] [2026-08-08T22:15:12.1011847Z] [ResourcesChanged] Money=4 Power=5 Fame=0 Voters=36
+[Info   :Gemblades Tracker] [2026-08-08T22:15:12.1047656Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=37
+[Info   :Gemblades Tracker] [2026-08-08T22:15:12.1104991Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=39
+[Info   :Gemblades Tracker] [2026-08-08T22:15:21.2175346Z] [ResourcesChanged] Money=4 Power=5 Fame=0 Voters=39
+[Info   :Gemblades Tracker] [2026-08-08T22:15:21.9185374Z] [ResourcesChanged] Money=4 Power=14 Fame=0 Voters=39
+[Info   :Gemblades Tracker] [2026-08-08T22:15:23.1508618Z] [ResourcesChanged] Money=4 Power=14 Fame=0 Voters=39
+[Info   :Gemblades Tracker] [2026-08-08T22:15:23.1564862Z] [ResourcesChanged] Money=4 Power=8 Fame=0 Voters=40
+[Info   :Gemblades Tracker] [2026-08-08T22:15:23.1619019Z] [ResourcesChanged] Money=4 Power=8 Fame=0 Voters=44
+[Info   :Gemblades Tracker] [2026-08-08T22:15:28.7350172Z] [ResourcesChanged] Money=4 Power=8 Fame=0 Voters=44
+[Info   :Gemblades Tracker] [2026-08-08T22:15:28.7386526Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=45
+[Info   :Gemblades Tracker] [2026-08-08T22:15:28.7448206Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:15:34.1516771Z] [ResourcesChanged] Money=5 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:15:34.4678434Z] [ResourcesChanged] Money=6 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:15:39.7759842Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:15:39.7759842Z] [ResourcesChanged] Money=2 Power=1 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:15:39.7759842Z] [TurnStarted] Turn=10 DeckSize=13
+[Info   :Gemblades Tracker] [2026-08-08T22:15:43.5357509Z] [ResourcesChanged] Money=2 Power=1 Fame=0 Voters=46
+[Info   :Gemblades Tracker] [2026-08-08T22:15:45.0509058Z] [ResourcesChanged] Money=2 Power=1 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:15:53.2010620Z] [ResourcesChanged] Money=3 Power=1 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:15:54.2674236Z] [ResourcesChanged] Money=4 Power=1 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:16:00.0188799Z] [ResourcesChanged] Money=4 Power=7 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:16:04.9691434Z] [ResourcesChanged] Money=4 Power=13 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:16:25.7182158Z] [ResourcesChanged] Money=4 Power=13 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:16:25.7182158Z] [ResourcesChanged] Money=2 Power=13 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:27.9182627Z] [ResourcesChanged] Money=2 Power=15 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:40.7175372Z] [ResourcesChanged] Money=3 Power=15 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:41.2013986Z] [ResourcesChanged] Money=3 Power=18 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:45.4359986Z] [ResourcesChanged] Money=2 Power=0 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:45.4359986Z] [ResourcesChanged] Money=2 Power=1 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:45.4359986Z] [TurnStarted] Turn=11 DeckSize=14
+[Info   :Gemblades Tracker] [2026-08-08T22:16:48.9348052Z] [ResourcesChanged] Money=2 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:48.9389843Z] [ResourcesChanged] Money=3 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:50.7371269Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:50.8518261Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=47
+[Info   :Gemblades Tracker] [2026-08-08T22:16:52.8515457Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:52.8540546Z] [ResourcesChanged] Money=5 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:57.2685795Z] [ResourcesChanged] Money=6 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:58.1538776Z] [ResourcesChanged] Money=7 Power=3 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:16:58.2691411Z] [ResourcesChanged] Money=7 Power=5 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:17:00.3176828Z] [ResourcesChanged] Money=7 Power=5 Fame=0 Voters=48
+[Info   :Gemblades Tracker] [2026-08-08T22:17:00.3217901Z] [ResourcesChanged] Money=7 Power=2 Fame=0 Voters=49
+[Info   :Gemblades Tracker] [2026-08-08T22:17:00.3263922Z] [ResourcesChanged] Money=7 Power=2 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:04.5009900Z] [ResourcesChanged] Money=8 Power=2 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:04.5030867Z] [ResourcesChanged] Money=9 Power=2 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:04.8176993Z] [ResourcesChanged] Money=10 Power=2 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:04.8212330Z] [ResourcesChanged] Money=11 Power=2 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:05.6535510Z] [ResourcesChanged] Money=12 Power=2 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:05.7695263Z] [ResourcesChanged] Money=12 Power=9 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:06.1508846Z] [ResourcesChanged] Money=12 Power=9 Fame=0 Voters=53
+[Info   :Gemblades Tracker] [2026-08-08T22:17:06.1556106Z] [ResourcesChanged] Money=12 Power=6 Fame=0 Voters=54
+[Info   :Gemblades Tracker] [2026-08-08T22:17:06.1602475Z] [ResourcesChanged] Money=14 Power=6 Fame=0 Voters=54
+[Info   :Gemblades Tracker] [2026-08-08T22:17:06.3038420Z] [ResourcesChanged] Money=14 Power=6 Fame=0 Voters=62
+[Info   :Gemblades Tracker] [2026-08-08T22:17:08.0507117Z] [ResourcesChanged] Money=14 Power=6 Fame=0 Voters=62
+[Info   :Gemblades Tracker] [2026-08-08T22:17:08.0549344Z] [ResourcesChanged] Money=14 Power=2 Fame=0 Voters=63
+[Info   :Gemblades Tracker] [2026-08-08T22:17:08.0621842Z] [ResourcesChanged] Money=15 Power=2 Fame=0 Voters=63
+[Info   :Gemblades Tracker] [2026-08-08T22:17:08.0621842Z] [ResourcesChanged] Money=15 Power=2 Fame=0 Voters=67
+[Info   :Gemblades Tracker] [2026-08-08T22:17:09.8679848Z] [ResourcesChanged] Money=15 Power=2 Fame=0 Voters=67
+[Info   :Gemblades Tracker] [2026-08-08T22:17:09.8679848Z] [ResourcesChanged] Money=6 Power=2 Fame=0 Voters=70
+[Info   :Gemblades Tracker] [2026-08-08T22:17:11.9014253Z] [ResourcesChanged] Money=6 Power=5 Fame=0 Voters=70
+[Info   :Gemblades Tracker] [2026-08-08T22:17:11.9040534Z] [ResourcesChanged] Money=7 Power=5 Fame=0 Voters=70
+[Info   :Gemblades Tracker] [2026-08-08T22:17:14.4841495Z] [ResourcesChanged] Money=7 Power=5 Fame=0 Voters=70
+[Info   :Gemblades Tracker] [2026-08-08T22:17:14.4886528Z] [ResourcesChanged] Money=7 Power=1 Fame=0 Voters=71
+[Info   :Gemblades Tracker] [2026-08-08T22:17:14.4948576Z] [ResourcesChanged] Money=7 Power=1 Fame=0 Voters=75
+[Info   :Gemblades Tracker] [2026-08-08T22:17:17.9011749Z] [ResourcesChanged] Money=7 Power=1 Fame=0 Voters=75
+[Info   :Gemblades Tracker] [2026-08-08T22:17:17.9011749Z] [ResourcesChanged] Money=2 Power=1 Fame=0 Voters=76
+[Info   :Gemblades Tracker] [2026-08-08T22:17:19.4648590Z] [ResourcesChanged] Money=4 Power=1 Fame=0 Voters=76
+[Info   :Gemblades Tracker] [2026-08-08T22:17:19.4653978Z] [ResourcesChanged] Money=4 Power=2 Fame=0 Voters=76
+[Info   :Gemblades Tracker] [2026-08-08T22:17:19.4653978Z] [TurnStarted] Turn=12 DeckSize=16
+[Info   :Gemblades Tracker] [2026-08-08T22:17:21.4034441Z] [ResourcesChanged] Money=5 Power=2 Fame=0 Voters=76
+[Info   :Gemblades Tracker] [2026-08-08T22:17:21.4034441Z] [ResourcesChanged] Money=5 Power=2 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:21.5200298Z] [ResourcesChanged] Money=5 Power=2 Fame=0 Voters=77
+[Info   :Gemblades Tracker] [2026-08-08T22:17:26.8682381Z] [ResourcesChanged] Money=5 Power=2 Fame=0 Voters=77
+[Info   :Gemblades Tracker] [2026-08-08T22:17:26.8682381Z] [ResourcesChanged] Money=0 Power=2 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:27.9347626Z] [ResourcesChanged] Money=0 Power=4 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:27.9383762Z] [ResourcesChanged] Money=1 Power=4 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:32.5532666Z] [ResourcesChanged] Money=2 Power=4 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:32.6691564Z] [ResourcesChanged] Money=2 Power=10 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:34.2839417Z] [ResourcesChanged] Money=2 Power=10 Fame=0 Voters=79
+[Info   :Gemblades Tracker] [2026-08-08T22:17:34.2889975Z] [ResourcesChanged] Money=2 Power=8 Fame=0 Voters=80
+[Info   :Gemblades Tracker] [2026-08-08T22:17:34.2919975Z] [ResourcesChanged] Money=2 Power=8 Fame=0 Voters=81
+[Info   :Gemblades Tracker] [2026-08-08T22:17:34.9392433Z] [ResourcesChanged] Money=2 Power=12 Fame=0 Voters=81
+[Info   :Gemblades Tracker] [2026-08-08T22:17:35.9002778Z] [ResourcesChanged] Money=3 Power=12 Fame=0 Voters=81
+[Info   :Gemblades Tracker] [2026-08-08T22:17:35.9034748Z] [ResourcesChanged] Money=4 Power=12 Fame=0 Voters=81
+[Info   :Gemblades Tracker] [2026-08-08T22:17:36.7849905Z] [ResourcesChanged] Money=5 Power=12 Fame=0 Voters=81
+[Info   :Gemblades Tracker] [2026-08-08T22:17:36.7884256Z] [ResourcesChanged] Money=6 Power=12 Fame=0 Voters=81
+[Info   :Gemblades Tracker] [2026-08-08T22:17:39.3014927Z] [ResourcesChanged] Money=6 Power=12 Fame=0 Voters=82
+[Info   :Gemblades Tracker] [2026-08-08T22:17:39.3047771Z] [ResourcesChanged] Money=7 Power=12 Fame=0 Voters=82
+[Info   :Gemblades Tracker] [2026-08-08T22:17:51.0347076Z] [ResourcesChanged] Money=7 Power=12 Fame=0 Voters=82
+[Info   :Gemblades Tracker] [2026-08-08T22:17:51.0347076Z] [ResourcesChanged] Money=0 Power=12 Fame=0 Voters=86
+[Info   :Gemblades Tracker] [2026-08-08T22:17:52.2677720Z] [ResourcesChanged] Money=3 Power=12 Fame=0 Voters=86
+[Info   :Gemblades Tracker] [2026-08-08T22:17:52.2714681Z] [ResourcesChanged] Money=4 Power=12 Fame=0 Voters=86
+[Info   :Gemblades Tracker] [2026-08-08T22:17:58.3178904Z] [ResourcesChanged] Money=4 Power=12 Fame=0 Voters=86
+[Info   :Gemblades Tracker] [2026-08-08T22:17:58.3226840Z] [ResourcesChanged] Money=4 Power=7 Fame=0 Voters=87
+[Info   :Gemblades Tracker] [2026-08-08T22:17:58.3282989Z] [ResourcesChanged] Money=4 Power=7 Fame=0 Voters=92
+[Info   :Gemblades Tracker] [2026-08-08T22:18:03.3173211Z] [ResourcesChanged] Money=4 Power=7 Fame=0 Voters=92
+[Info   :Gemblades Tracker] [2026-08-08T22:18:03.3231036Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=93
+[Info   :Gemblades Tracker] [2026-08-08T22:18:03.3281602Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=97
+[Info   :Gemblades Tracker] [2026-08-08T22:18:15.4333170Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=97
+[Info   :Gemblades Tracker] [2026-08-08T22:18:15.4388865Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=98
+[Info   :Gemblades Tracker] [2026-08-08T22:18:15.4440417Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=102
+[Info   :Gemblades Tracker] [2026-08-08T22:18:18.7666179Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=102
+[Info   :Gemblades Tracker] [2026-08-08T22:18:18.7706893Z] [ResourcesChanged] Money=5 Power=3 Fame=0 Voters=102
+[Info   :Gemblades Tracker] [2026-08-08T22:18:19.9706166Z] [ResourcesChanged] Money=6 Power=3 Fame=0 Voters=102
+[Info   :Gemblades Tracker] [2026-08-08T22:18:20.0868035Z] [ResourcesChanged] Money=6 Power=10 Fame=0 Voters=102
+[Info   :Gemblades Tracker] [2026-08-08T22:18:21.6508056Z] [ResourcesChanged] Money=6 Power=10 Fame=0 Voters=102
+[Info   :Gemblades Tracker] [2026-08-08T22:18:21.6560238Z] [ResourcesChanged] Money=6 Power=7 Fame=0 Voters=103
+[Info   :Gemblades Tracker] [2026-08-08T22:18:21.6616205Z] [ResourcesChanged] Money=6 Power=7 Fame=0 Voters=105
+[Info   :Gemblades Tracker] [2026-08-08T22:18:21.8172045Z] [ResourcesChanged] Money=6 Power=11 Fame=0 Voters=105
+[Info   :Gemblades Tracker] [2026-08-08T22:18:28.5847011Z] [ResourcesChanged] Money=6 Power=11 Fame=0 Voters=105
+[Info   :Gemblades Tracker] [2026-08-08T22:18:28.5888022Z] [ResourcesChanged] Money=6 Power=8 Fame=0 Voters=106
+[Info   :Gemblades Tracker] [2026-08-08T22:18:28.5932722Z] [ResourcesChanged] Money=6 Power=8 Fame=0 Voters=108
+[Info   :Gemblades Tracker] [2026-08-08T22:18:28.7360265Z] [ResourcesChanged] Money=6 Power=8 Fame=0 Voters=113
+[Info   :Gemblades Tracker] [2026-08-08T22:18:30.4167089Z] [ResourcesChanged] Money=6 Power=8 Fame=0 Voters=113
+[Info   :Gemblades Tracker] [2026-08-08T22:18:30.4182323Z] [ResourcesChanged] Money=0 Power=8 Fame=0 Voters=116
+[Info   :Gemblades Tracker] [2026-08-08T22:18:31.6849502Z] [ResourcesChanged] Money=2 Power=8 Fame=0 Voters=116
+[Info   :Gemblades Tracker] [2026-08-08T22:18:34.2834428Z] [ResourcesChanged] Money=2 Power=8 Fame=0 Voters=116
+[Info   :Gemblades Tracker] [2026-08-08T22:18:34.2896352Z] [ResourcesChanged] Money=2 Power=6 Fame=0 Voters=117
+[Info   :Gemblades Tracker] [2026-08-08T22:18:34.2946728Z] [ResourcesChanged] Money=3 Power=6 Fame=0 Voters=117
+[Info   :Gemblades Tracker] [2026-08-08T22:18:34.2946728Z] [ResourcesChanged] Money=3 Power=6 Fame=0 Voters=118
+[Info   :Gemblades Tracker] [2026-08-08T22:18:37.4850006Z] [ResourcesChanged] Money=3 Power=9 Fame=0 Voters=118
+[Info   :Gemblades Tracker] [2026-08-08T22:18:37.4880476Z] [ResourcesChanged] Money=4 Power=9 Fame=0 Voters=118
+[Info   :Gemblades Tracker] [2026-08-08T22:18:39.3007724Z] [ResourcesChanged] Money=4 Power=9 Fame=0 Voters=118
+[Info   :Gemblades Tracker] [2026-08-08T22:18:39.3058306Z] [ResourcesChanged] Money=4 Power=4 Fame=0 Voters=119
+[Info   :Gemblades Tracker] [2026-08-08T22:18:39.3120455Z] [ResourcesChanged] Money=5 Power=4 Fame=0 Voters=119
+[Info   :Gemblades Tracker] [2026-08-08T22:18:39.4525524Z] [ResourcesChanged] Money=5 Power=4 Fame=0 Voters=117
+[Info   :Gemblades Tracker] [2026-08-08T22:18:40.4515836Z] [ResourcesChanged] Money=5 Power=4 Fame=0 Voters=117
+[Info   :Gemblades Tracker] [2026-08-08T22:18:40.4561580Z] [ResourcesChanged] Money=5 Power=2 Fame=0 Voters=118
+[Info   :Gemblades Tracker] [2026-08-08T22:18:40.4611955Z] [ResourcesChanged] Money=6 Power=2 Fame=0 Voters=118
+[Info   :Gemblades Tracker] [2026-08-08T22:18:40.6024250Z] [ResourcesChanged] Money=6 Power=2 Fame=0 Voters=115
+[Info   :Gemblades Tracker] [2026-08-08T22:18:42.6846693Z] [ResourcesChanged] Money=6 Power=2 Fame=0 Voters=115
+[Info   :Gemblades Tracker] [2026-08-08T22:18:42.6894680Z] [ResourcesChanged] Money=6 Power=0 Fame=0 Voters=116
+[Info   :Gemblades Tracker] [2026-08-08T22:18:42.6967416Z] [ResourcesChanged] Money=6 Power=0 Fame=0 Voters=117
+[Info   :Gemblades Tracker] [2026-08-08T22:18:47.8008877Z] [ResourcesChanged] Money=6 Power=0 Fame=0 Voters=117
+[Info   :Gemblades Tracker] [2026-08-08T22:18:47.8008877Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=119
+[Info   :Gemblades Tracker] [2026-08-08T22:18:49.3508949Z] [ResourcesChanged] Money=4 Power=0 Fame=0 Voters=119
+[Info   :Gemblades Tracker] [2026-08-08T22:18:49.3519274Z] [ResourcesChanged] Money=1 Power=0 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:52.5566031Z] [ResourcesChanged] Money=0 Power=2 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:52.5566031Z] [ResourcesChanged] Money=2 Power=2 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:52.5576044Z] [ResourcesChanged] Money=4 Power=2 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:52.5576044Z] [ResourcesChanged] Money=4 Power=3 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:52.5576044Z] [TurnStarted] Turn=13 DeckSize=20
+[Info   :Gemblades Tracker] [2026-08-08T22:18:57.0508490Z] [ResourcesChanged] Money=4 Power=6 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:57.0540560Z] [ResourcesChanged] Money=5 Power=6 Fame=0 Voters=120
+[Info   :Gemblades Tracker] [2026-08-08T22:18:57.0540560Z] [ResourcesChanged] Money=5 Power=6 Fame=0 Voters=123
+[Info   :Gemblades Tracker] [2026-08-08T22:18:57.9039726Z] [ResourcesChanged] Money=6 Power=6 Fame=0 Voters=123
+[Info   :Gemblades Tracker] [2026-08-08T22:18:58.0193192Z] [ResourcesChanged] Money=6 Power=10 Fame=0 Voters=123
+[Info   :Gemblades Tracker] [2026-08-08T22:18:58.9513706Z] [ResourcesChanged] Money=8 Power=10 Fame=0 Voters=123
+[Info   :Gemblades Tracker] [2026-08-08T22:19:00.1674254Z] [ResourcesChanged] Money=8 Power=10 Fame=0 Voters=123
+[Info   :Gemblades Tracker] [2026-08-08T22:19:00.1722208Z] [ResourcesChanged] Money=6 Power=5 Fame=0 Voters=124
+[Info   :Gemblades Tracker] [2026-08-08T22:19:00.1787393Z] [ResourcesChanged] Money=6 Power=5 Fame=0 Voters=129
+[Info   :Gemblades Tracker] [2026-08-08T22:19:13.5859668Z] [GameEnd] Won=true Turns=13
