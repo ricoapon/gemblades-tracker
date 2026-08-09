@@ -9,14 +9,18 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 import org.sqlite.SQLiteConfig;
 import org.sqlite.SQLiteDataSource;
 
+import java.io.IOException;
+import java.io.UncheckedIOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.sql.Types;
 import java.time.Instant;
 
 /**
- * Entry point for the local SQLite database. Constructing a {@code Database} opens (creating it if
- * necessary) the SQLite file at the given path, runs any pending Flyway migrations so the schema is
- * up to date, and exposes typed DAOs for querying.
+ * Entry point for the local SQLite database. Constructing a {@code Database} opens the SQLite file
+ * at the given path, creating the file (and any missing parent directories) if it does not exist
+ * yet, runs any pending Flyway migrations so the schema is up to date, and exposes typed DAOs for
+ * querying.
  *
  * <p>Timestamps are stored as ISO-8601 text and mapped to/from {@link Instant}; foreign key
  * enforcement (off by default in SQLite) is enabled on every connection.
@@ -25,7 +29,11 @@ public class Database {
     private final Jdbi jdbi;
 
     public Database(Path dbPath) {
-        String url = "jdbc:sqlite:" + dbPath.toAbsolutePath();
+        Path absolutePath = dbPath.toAbsolutePath();
+        // SQLite creates the database file itself on first connection, but not its parent
+        // directories, so ensure they exist first.
+        ensureParentDirectoryExists(absolutePath);
+        String url = "jdbc:sqlite:" + absolutePath;
 
         // Every connection enforces foreign keys, which SQLite disables by default.
         SQLiteConfig sqliteConfig = new SQLiteConfig();
@@ -43,6 +51,18 @@ public class Database {
         this.jdbi = Jdbi.create(dataSource);
         jdbi.installPlugin(new SqlObjectPlugin());
         registerInstantMapping(jdbi);
+    }
+
+    private static void ensureParentDirectoryExists(Path absolutePath) {
+        Path parent = absolutePath.getParent();
+        if (parent == null) {
+            return;
+        }
+        try {
+            Files.createDirectories(parent);
+        } catch (IOException e) {
+            throw new UncheckedIOException("Failed to create database directory: " + parent, e);
+        }
     }
 
     /**

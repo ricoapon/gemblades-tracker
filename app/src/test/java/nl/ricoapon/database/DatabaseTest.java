@@ -43,6 +43,18 @@ class DatabaseTest {
     }
 
     @Test
+    void createsDatabaseFileAndMissingParentDirectories() {
+        Path nestedPath = tempDir.resolve("does/not/exist/yet/game.db");
+        assertFalse(Files.exists(nestedPath.getParent()), "precondition: parent directory should be absent");
+
+        Database nested = new Database(nestedPath);
+
+        assertTrue(Files.exists(nestedPath), "the database file should be created along with its directories");
+        // And it is a working database.
+        assertTrue(nested.gameDao().findAll().isEmpty());
+    }
+
+    @Test
     void insertsAndReadsBackAGame() {
         // Truncate to millis: SQLite stores what we give it, but comparing at millis avoids any
         // nanosecond surprises and reflects realistic usage.
