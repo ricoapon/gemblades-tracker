@@ -45,12 +45,12 @@ static class PlayerManagerStartRunTransitionCoroutinePatch
 {
     static void Postfix(PlayerManager __instance, int difficultySnapshot, int runLengthSnapshot)
     {
-        // Length should always be 30, but log it anyway in case it changes.
         Plugin.LogEvent(
             "GameStarted",
             $"Difficulty={difficultySnapshot}",
             $"Length={runLengthSnapshot}",
-            $"RequiredVoters={__instance.requiredVotersForVictory}"
+            $"RequiredVoters={__instance.requiredVotersForVictory}",
+            $"IsGauntlet={__instance.IsGauntletSelected}"
         );
 
         Plugin.LogEvent(
