@@ -13,8 +13,6 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import java.awt.BorderLayout;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * The "Games" tab: a table of all games on top, and — when a row is selected — that game's per-turn
@@ -54,15 +52,11 @@ class GamesPanel extends JPanel {
     }
 
     /**
-     * Replaces the games shown. Turn counts for the "Turns" column are fetched in one grouped query.
+     * Replaces the games shown. The "Turns" column comes from each game's derived
+     * {@link Game#getNrOfTurns()}.
      */
     void showGames(List<Game> games) {
-        Map<String, Integer> turnCounts = database.jdbi().withHandle(handle -> handle
-                .createQuery("SELECT game_id, COUNT(*) AS c FROM game_turn GROUP BY game_id")
-                .map((rs, ctx) -> Map.entry(rs.getString("game_id"), rs.getInt("c")))
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
-
-        gamesModel.setData(games, turnCounts);
+        gamesModel.setData(games);
         gamesTable.clearSelection();
         clearDetail();
     }

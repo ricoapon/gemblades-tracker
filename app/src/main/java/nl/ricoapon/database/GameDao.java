@@ -28,9 +28,17 @@ public interface GameDao {
             """)
     void update(@BindBean Game game);
 
-    @SqlQuery("SELECT * FROM game WHERE id = :id")
+    @SqlQuery("""
+            SELECT g.*, (SELECT COUNT(*) FROM game_turn t WHERE t.game_id = g.id) AS nr_of_turns
+            FROM game g
+            WHERE g.id = :id
+            """)
     Optional<Game> findById(@Bind("id") String id);
 
-    @SqlQuery("SELECT * FROM game ORDER BY started_at")
+    @SqlQuery("""
+            SELECT g.*, (SELECT COUNT(*) FROM game_turn t WHERE t.game_id = g.id) AS nr_of_turns
+            FROM game g
+            ORDER BY g.started_at
+            """)
     List<Game> findAll();
 }

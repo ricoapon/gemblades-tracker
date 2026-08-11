@@ -8,8 +8,8 @@ import java.util.Objects;
  * {@link #isFinished()} (with a {@link #getWon()} outcome) once it ends.
  *
  * <p>This is a mutable persistence entity: load it, change fields, and save it back. Equality is
- * value based over all fields, so avoid using instances as keys in hash-based collections while
- * they are still being mutated.
+ * value based over the stored fields, so avoid using instances as keys in hash-based collections
+ * while they are still being mutated.
  */
 public class Game {
     private String id;
@@ -19,6 +19,12 @@ public class Game {
     private Boolean won;
     private Instant startedAt;
     private Instant endedAt;
+    /**
+     * The number of turns recorded for this game. This is not a stored column: it is derived from
+     * {@code game_turn} by the DAO when a game is read, and is 0 on a freshly constructed game. It
+     * is therefore excluded from {@link #equals(Object)} / {@link #hashCode()}.
+     */
+    private int nrOfTurns;
 
     /** No-arg constructor required for JDBI bean mapping. */
     public Game() {
@@ -81,6 +87,14 @@ public class Game {
         this.endedAt = endedAt;
     }
 
+    public int getNrOfTurns() {
+        return nrOfTurns;
+    }
+
+    public void setNrOfTurns(int nrOfTurns) {
+        this.nrOfTurns = nrOfTurns;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -105,6 +119,7 @@ public class Game {
     @Override
     public String toString() {
         return "Game{id='" + id + "', runId='" + runId + "', finished=" + finished
-                + ", won=" + won + ", startedAt=" + startedAt + ", endedAt=" + endedAt + '}';
+                + ", won=" + won + ", startedAt=" + startedAt + ", endedAt=" + endedAt
+                + ", nrOfTurns=" + nrOfTurns + '}';
     }
 }

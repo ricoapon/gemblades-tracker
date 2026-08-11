@@ -8,11 +8,10 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Read-only table model backing the games overview. Each row is a {@link Game}; the turn count is
- * supplied separately (there is no turn count on the record itself).
+ * Read-only table model backing the games overview. Each row is a {@link Game}; the turn count
+ * comes from the game's derived {@link Game#getNrOfTurns()}.
  */
 class GamesTableModel extends AbstractTableModel {
     private static final String[] COLUMNS = {"Run", "Started", "Ended", "Finished", "Won", "Turns", "Duration"};
@@ -20,11 +19,9 @@ class GamesTableModel extends AbstractTableModel {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault());
 
     private List<Game> games = List.of();
-    private Map<String, Integer> turnCounts = Map.of();
 
-    void setData(List<Game> games, Map<String, Integer> turnCounts) {
+    void setData(List<Game> games) {
         this.games = games;
-        this.turnCounts = turnCounts;
         fireTableDataChanged();
     }
 
@@ -56,7 +53,7 @@ class GamesTableModel extends AbstractTableModel {
             case 2 -> game.getEndedAt() == null ? "" : TIME_FORMAT.format(game.getEndedAt());
             case 3 -> game.isFinished() ? "yes" : "no";
             case 4 -> outcome(game);
-            case 5 -> turnCounts.getOrDefault(game.getId(), 0);
+            case 5 -> game.getNrOfTurns();
             case 6 -> duration(game.getStartedAt(), game.getEndedAt());
             default -> "";
         };

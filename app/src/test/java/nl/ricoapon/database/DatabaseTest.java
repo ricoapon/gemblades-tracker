@@ -71,6 +71,7 @@ class DatabaseTest {
         assertNull(loaded.get().getWon(), "won should round-trip as null while the game is unfinished");
         assertEquals(startedAt, loaded.get().getStartedAt());
         assertNull(loaded.get().getEndedAt(), "endedAt should round-trip as null while in progress");
+        assertEquals(0, loaded.get().getNrOfTurns(), "a game with no turns has nrOfTurns 0");
     }
 
     @Test
@@ -107,6 +108,9 @@ class DatabaseTest {
         assertEquals(List.of(turn1, turn2), turns);
         assertEquals(50, turns.get(0).getVotersGained());
         assertEquals(12, turns.get(1).getStartingDeckSize());
+
+        // The derived nrOfTurns reflects how many turns were recorded for the game.
+        assertEquals(2, database.gameDao().findById(game.getId()).orElseThrow().getNrOfTurns());
     }
 
     @Test
