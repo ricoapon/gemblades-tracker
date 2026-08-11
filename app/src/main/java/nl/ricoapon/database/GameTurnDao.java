@@ -33,6 +33,17 @@ public interface GameTurnDao {
             """)
     void insert(@BindBean GameTurn turn);
 
+    @SqlUpdate("""
+            UPDATE game_turn SET
+                money_gained = :moneyGained, money_spent = :moneySpent,
+                power_gained = :powerGained, power_spent = :powerSpent,
+                fame_gained = :fameGained, fame_spent = :fameSpent,
+                voters_gained = :votersGained, voters_spent = :votersSpent,
+                starting_deck_size = :startingDeckSize
+            WHERE game_id = :gameId AND turn_number = :turnNumber
+            """)
+    void update(@BindBean GameTurn turn);
+
     @SqlQuery("SELECT * FROM game_turn WHERE game_id = :gameId ORDER BY turn_number")
     List<GameTurn> findByGameId(@Bind("gameId") String gameId);
 }

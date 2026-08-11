@@ -114,6 +114,27 @@ class DatabaseTest {
     }
 
     @Test
+    void updatesATurnInPlace() {
+        Game game = new Game(UUID.randomUUID().toString(), "run-9", false, null,
+                Instant.now().truncatedTo(ChronoUnit.MILLIS), null);
+        database.gameDao().insert(game);
+
+        GameTurn turn = new GameTurn(game.getId(), 1, 0, 0, 0, 0, 0, 0, 0, 0, 15);
+        database.gameTurnDao().insert(turn);
+
+        // Accumulate into the turn, then persist the changes.
+        turn.setMoneyGained(turn.getMoneyGained() + 7);
+        turn.setVotersSpent(3);
+        database.gameTurnDao().update(turn);
+
+        List<GameTurn> turns = database.gameTurnDao().findByGameId(game.getId());
+        assertEquals(1, turns.size());
+        assertEquals(turn, turns.get(0));
+        assertEquals(7, turns.get(0).getMoneyGained());
+        assertEquals(3, turns.get(0).getVotersSpent());
+    }
+
+    @Test
     void foreignKeyConstraintIsEnforced() {
         GameTurn orphan = new GameTurn("no-such-game", 1, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
