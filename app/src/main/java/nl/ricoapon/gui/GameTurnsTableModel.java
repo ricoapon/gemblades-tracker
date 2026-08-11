@@ -45,16 +45,16 @@ class GameTurnsTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         GameTurn turn = turns.get(rowIndex);
         return switch (columnIndex) {
-            case 0 -> turn.turnNumber();
-            case 1 -> turn.moneyGained();
-            case 2 -> turn.moneySpent();
-            case 3 -> turn.powerGained();
-            case 4 -> turn.powerSpent();
-            case 5 -> turn.fameGained();
-            case 6 -> turn.fameSpent();
-            case 7 -> turn.votersGained();
-            case 8 -> turn.votersSpent();
-            case 9 -> turn.startingDeckSize();
+            case 0 -> turn.getTurnNumber();
+            case 1 -> turn.getMoneyGained();
+            case 2 -> turn.getMoneySpent();
+            case 3 -> turn.getPowerGained();
+            case 4 -> turn.getPowerSpent();
+            case 5 -> turn.getFameGained();
+            case 6 -> turn.getFameSpent();
+            case 7 -> turn.getVotersGained();
+            case 8 -> turn.getVotersSpent();
+            case 9 -> turn.getStartingDeckSize();
             default -> 0;
         };
     }

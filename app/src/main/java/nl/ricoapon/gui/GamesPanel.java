@@ -74,7 +74,7 @@ class GamesPanel extends JPanel {
             return;
         }
         Game game = gamesModel.gameAt(gamesTable.convertRowIndexToModel(viewRow));
-        List<GameTurn> turns = database.gameTurnDao().findByGameId(game.id());
+        List<GameTurn> turns = database.gameTurnDao().findByGameId(game.getId());
 
         turnsModel.setTurns(turns);
         chartContainer.removeAll();

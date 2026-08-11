@@ -34,14 +34,14 @@ final class ChartFactoryHelper {
         int cumulativeFame = 0;
         int cumulativeVoters = 0;
         for (GameTurn turn : turns) {
-            cumulativeMoney += turn.moneyGained() - turn.moneySpent();
-            cumulativePower += turn.powerGained() - turn.powerSpent();
-            cumulativeFame += turn.fameGained() - turn.fameSpent();
-            cumulativeVoters += turn.votersGained() - turn.votersSpent();
-            money.add(turn.turnNumber(), cumulativeMoney);
-            power.add(turn.turnNumber(), cumulativePower);
-            fame.add(turn.turnNumber(), cumulativeFame);
-            voters.add(turn.turnNumber(), cumulativeVoters);
+            cumulativeMoney += turn.getMoneyGained() - turn.getMoneySpent();
+            cumulativePower += turn.getPowerGained() - turn.getPowerSpent();
+            cumulativeFame += turn.getFameGained() - turn.getFameSpent();
+            cumulativeVoters += turn.getVotersGained() - turn.getVotersSpent();
+            money.add(turn.getTurnNumber(), cumulativeMoney);
+            power.add(turn.getTurnNumber(), cumulativePower);
+            fame.add(turn.getTurnNumber(), cumulativeFame);
+            voters.add(turn.getTurnNumber(), cumulativeVoters);
         }
 
         XYSeriesCollection dataset = new XYSeriesCollection();

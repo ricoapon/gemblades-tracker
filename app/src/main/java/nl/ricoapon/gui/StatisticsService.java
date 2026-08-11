@@ -42,26 +42,26 @@ public final class StatisticsService {
         long sumNetVoters = 0;
 
         for (Game game : games) {
-            if (!game.finished()) {
+            if (!game.isFinished()) {
                 inProgress++;
                 continue;
             }
             finished++;
-            if (!Boolean.TRUE.equals(game.won())) {
+            if (!Boolean.TRUE.equals(game.getWon())) {
                 continue;
             }
             won++;
 
-            List<GameTurn> turns = database.gameTurnDao().findByGameId(game.id());
-            wonGames.add(new Statistics.WonGameResult(game.runId(), turns.size()));
+            List<GameTurn> turns = database.gameTurnDao().findByGameId(game.getId());
+            wonGames.add(new Statistics.WonGameResult(game.getRunId(), turns.size()));
             totalTurns += turns.size();
             for (GameTurn turn : turns) {
-                sumMoneySpent += turn.moneySpent();
-                sumMoneyGained += turn.moneyGained();
-                sumNetMoney += turn.moneyGained() - turn.moneySpent();
-                sumNetPower += turn.powerGained() - turn.powerSpent();
-                sumNetFame += turn.fameGained() - turn.fameSpent();
-                sumNetVoters += turn.votersGained() - turn.votersSpent();
+                sumMoneySpent += turn.getMoneySpent();
+                sumMoneyGained += turn.getMoneyGained();
+                sumNetMoney += turn.getMoneyGained() - turn.getMoneySpent();
+                sumNetPower += turn.getPowerGained() - turn.getPowerSpent();
+                sumNetFame += turn.getFameGained() - turn.getFameSpent();
+                sumNetVoters += turn.getVotersGained() - turn.getVotersSpent();
             }
         }
 

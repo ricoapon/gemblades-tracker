@@ -1,32 +1,110 @@
 package nl.ricoapon.database;
 
 import java.time.Instant;
-import java.util.UUID;
+import java.util.Objects;
 
 /**
  * A single play-through of a run. A game is created when a run starts and marked
- * {@link #finished()} (with {@link #won()}) once it ends.
+ * {@link #isFinished()} (with a {@link #getWon()} outcome) once it ends.
  *
- * @param id        randomly generated identifier
- * @param runId     the run this game belongs to
- * @param finished  whether the game has ended
- * @param won       whether the game was won, or {@code null} while the game is not yet finished
- * @param startedAt when the game started
- * @param endedAt   when the game ended, or {@code null} while still in progress
+ * <p>This is a mutable persistence entity: load it, change fields, and save it back. Equality is
+ * value based over all fields, so avoid using instances as keys in hash-based collections while
+ * they are still being mutated.
  */
-public record Game(String id, String runId, boolean finished, Boolean won, Instant startedAt, Instant endedAt) {
-    /**
-     * Creates a new, unfinished game with a freshly generated id. The outcome ({@link #won()}) is
-     * left {@code null} until the game is finished.
-     */
-    public static Game start(String runId, Instant startedAt) {
-        return new Game(UUID.randomUUID().toString(), runId, false, null, startedAt, null);
+public class Game {
+    private String id;
+    private String runId;
+    private boolean finished;
+    /** Whether the game was won, or {@code null} while the game is not yet finished. */
+    private Boolean won;
+    private Instant startedAt;
+    private Instant endedAt;
+
+    /** No-arg constructor required for JDBI bean mapping. */
+    public Game() {
     }
 
-    /**
-     * Returns a copy of this game marked as finished with the given outcome and end time.
-     */
-    public Game finish(boolean won, Instant endedAt) {
-        return new Game(id, runId, true, won, startedAt, endedAt);
+    public Game(String id, String runId, boolean finished, Boolean won, Instant startedAt, Instant endedAt) {
+        this.id = id;
+        this.runId = runId;
+        this.finished = finished;
+        this.won = won;
+        this.startedAt = startedAt;
+        this.endedAt = endedAt;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getRunId() {
+        return runId;
+    }
+
+    public void setRunId(String runId) {
+        this.runId = runId;
+    }
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }
+
+    public Boolean getWon() {
+        return won;
+    }
+
+    public void setWon(Boolean won) {
+        this.won = won;
+    }
+
+    public Instant getStartedAt() {
+        return startedAt;
+    }
+
+    public void setStartedAt(Instant startedAt) {
+        this.startedAt = startedAt;
+    }
+
+    public Instant getEndedAt() {
+        return endedAt;
+    }
+
+    public void setEndedAt(Instant endedAt) {
+        this.endedAt = endedAt;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Game other)) {
+            return false;
+        }
+        return finished == other.finished
+                && Objects.equals(id, other.id)
+                && Objects.equals(runId, other.runId)
+                && Objects.equals(won, other.won)
+                && Objects.equals(startedAt, other.startedAt)
+                && Objects.equals(endedAt, other.endedAt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, runId, finished, won, startedAt, endedAt);
+    }
+
+    @Override
+    public String toString() {
+        return "Game{id='" + id + "', runId='" + runId + "', finished=" + finished
+                + ", won=" + won + ", startedAt=" + startedAt + ", endedAt=" + endedAt + '}';
     }
 }

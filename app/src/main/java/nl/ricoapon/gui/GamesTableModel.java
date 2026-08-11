@@ -51,13 +51,13 @@ class GamesTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Game game = games.get(rowIndex);
         return switch (columnIndex) {
-            case 0 -> game.runId();
-            case 1 -> TIME_FORMAT.format(game.startedAt());
-            case 2 -> game.endedAt() == null ? "" : TIME_FORMAT.format(game.endedAt());
-            case 3 -> game.finished() ? "yes" : "no";
+            case 0 -> game.getRunId();
+            case 1 -> TIME_FORMAT.format(game.getStartedAt());
+            case 2 -> game.getEndedAt() == null ? "" : TIME_FORMAT.format(game.getEndedAt());
+            case 3 -> game.isFinished() ? "yes" : "no";
             case 4 -> outcome(game);
-            case 5 -> turnCounts.getOrDefault(game.id(), 0);
-            case 6 -> duration(game.startedAt(), game.endedAt());
+            case 5 -> turnCounts.getOrDefault(game.getId(), 0);
+            case 6 -> duration(game.getStartedAt(), game.getEndedAt());
             default -> "";
         };
     }
@@ -68,10 +68,10 @@ class GamesTableModel extends AbstractTableModel {
     }
 
     private static String outcome(Game game) {
-        if (!game.finished()) {
+        if (!game.isFinished()) {
             return "";
         }
-        return Boolean.TRUE.equals(game.won()) ? "won" : "lost";
+        return Boolean.TRUE.equals(game.getWon()) ? "won" : "lost";
     }
 
     private static String duration(Instant start, Instant end) {

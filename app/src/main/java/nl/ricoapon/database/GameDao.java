@@ -1,8 +1,8 @@
 package nl.ricoapon.database;
 
-import org.jdbi.v3.sqlobject.config.RegisterConstructorMapper;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
-import org.jdbi.v3.sqlobject.customizer.BindMethods;
+import org.jdbi.v3.sqlobject.customizer.BindBean;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
@@ -11,22 +11,22 @@ import java.util.Optional;
 
 /**
  * Data access for the {@code game} table. JDBI maps the snake_case columns onto the
- * {@link Game} record's camelCase components automatically.
+ * {@link Game} bean's camelCase properties automatically.
  */
-@RegisterConstructorMapper(Game.class)
+@RegisterBeanMapper(Game.class)
 public interface GameDao {
     @SqlUpdate("""
             INSERT INTO game (id, run_id, finished, won, started_at, ended_at)
             VALUES (:id, :runId, :finished, :won, :startedAt, :endedAt)
             """)
-    void insert(@BindMethods Game game);
+    void insert(@BindBean Game game);
 
     @SqlUpdate("""
             UPDATE game
             SET finished = :finished, won = :won, ended_at = :endedAt
             WHERE id = :id
             """)
-    void update(@BindMethods Game game);
+    void update(@BindBean Game game);
 
     @SqlQuery("SELECT * FROM game WHERE id = :id")
     Optional<Game> findById(@Bind("id") String id);
