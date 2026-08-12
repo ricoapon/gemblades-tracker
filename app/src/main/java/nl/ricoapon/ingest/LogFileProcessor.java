@@ -154,7 +154,7 @@ public class LogFileProcessor {
      * @throws LogProcessingException if the line cannot be parsed or violates the expected game state
      */
     public void process(String line) {
-        if (line.isBlank()) {
+        if (line.isBlank() || !line.contains(":Gemblades Tracker")) {
             return;
         }
 
