@@ -29,13 +29,14 @@ public final class ViewerApp {
     private static final DateTimeFormatter LOADED_AT = DateTimeFormatter.ofPattern("HH:mm:ss");
 
     private final Database database;
-    private final GamesPanel gamesPanel;
-    private final StatisticsPanel statisticsPanel = new StatisticsPanel();
+    private final GameModePanel normalPanel;
+    private final GameModePanel gauntletPanel;
     private final JLabel statusLabel = new JLabel();
 
     private ViewerApp(Database database) {
         this.database = database;
-        this.gamesPanel = new GamesPanel(database);
+        this.normalPanel = new GameModePanel(database);
+        this.gauntletPanel = new GameModePanel(database);
     }
 
     /**
@@ -63,8 +64,8 @@ public final class ViewerApp {
         toolbar.add(statusLabel);
 
         JTabbedPane tabs = new JTabbedPane();
-        tabs.addTab("Games", gamesPanel);
-        tabs.addTab("Statistics", statisticsPanel);
+        tabs.addTab("Normal", normalPanel);
+        tabs.addTab("Gauntlet", gauntletPanel);
 
         JPanel content = new JPanel(new BorderLayout());
         content.setBorder(BorderFactory.createEmptyBorder(6, 6, 6, 6));
@@ -89,9 +90,13 @@ public final class ViewerApp {
 
     private void reload() {
         List<Game> games = database.gameDao().findAll();
-        gamesPanel.showGames(games);
-        statisticsPanel.setStatistics(StatisticsService.compute(database));
-        statusLabel.setText(games.size() + " game(s) — loaded " + LocalTime.now().format(LOADED_AT)
-                + " — " + Constants.DB_FILE_PATH);
+        List<Game> normalGames = games.stream().filter(game -> !game.isGauntlet()).toList();
+        List<Game> gauntletGames = games.stream().filter(Game::isGauntlet).toList();
+
+        normalPanel.update(normalGames, StatisticsService.compute(database, false));
+        gauntletPanel.update(gauntletGames, StatisticsService.compute(database, true));
+
+        statusLabel.setText(games.size() + " game(s) — " + gauntletGames.size() + " gauntlet — loaded "
+                + LocalTime.now().format(LOADED_AT) + " — " + Constants.DB_FILE_PATH);
     }
 }

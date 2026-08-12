@@ -44,7 +44,8 @@ public class LogFileProcessor {
                 case "TrackerLoaded" -> new TrackerLoaded(timestamp,
                         params.getInt("GameVersion"), params.get("RunID"));
                 case "GameStarted" -> new GameStarted(timestamp,
-                        params.getInt("Difficulty"), params.getInt("Length"), params.getInt("RequiredVoters"));
+                        params.getInt("Difficulty"), params.getInt("Length"), params.getInt("RequiredVoters"),
+                        params.getBoolean("IsGauntlet"));
                 case "TurnStarted" -> new TurnStarted(timestamp,
                         params.getInt("Turn"), params.getInt("DeckSize"));
                 case "ResourcesChanged" -> new ResourcesChanged(timestamp,
@@ -67,7 +68,7 @@ public class LogFileProcessor {
     record TrackerLoaded(Instant timestamp, int gameVersion, String runId) implements LogLine {
     }
 
-    record GameStarted(Instant timestamp, int difficulty, int length, int requiredVoters) implements LogLine {
+    record GameStarted(Instant timestamp, int difficulty, int length, int requiredVoters, boolean isGauntlet) implements LogLine {
     }
 
     record TurnStarted(Instant timestamp, int turn, int deckSize) implements LogLine {
@@ -116,11 +117,12 @@ public class LogFileProcessor {
         }
 
         boolean getBoolean(String key) {
+            // The plugin is inconsistent about casing: it emits e.g. Won=false but IsGauntlet=True.
             String value = get(key);
-            if (value.equals("true")) {
+            if (value.equalsIgnoreCase("true")) {
                 return true;
             }
-            if (value.equals("false")) {
+            if (value.equalsIgnoreCase("false")) {
                 return false;
             }
             throw new LogProcessingException("Expected key " + key + " to be a boolean, but was '" + value + "': " + rawLine);
@@ -197,7 +199,8 @@ public class LogFileProcessor {
     private void handleGameStarted(GameStarted gameStarted) {
         // If we found a new game while the previous one wasn't finished, we don't need to do anything. Every step is
         // saved, so we can throw away the old one without doing anything.
-        game = new Game(UUID.randomUUID().toString(), runId, false, null, gameStarted.timestamp, null);
+        game = new Game(UUID.randomUUID().toString(), runId, false, null, gameStarted.timestamp, null,
+                gameStarted.difficulty, gameStarted.length, gameStarted.requiredVoters, gameStarted.isGauntlet);
         gameDao.insert(game);
 
         // A new game starts fresh: forget the previous game's turn and resource totals.

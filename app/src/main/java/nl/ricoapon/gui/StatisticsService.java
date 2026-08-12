@@ -18,11 +18,15 @@ public final class StatisticsService {
     }
 
     /**
-     * Reads all games and their turns and returns the derived statistics. Returns
-     * {@link Statistics#empty()} when there are no games.
+     * Reads the games of the requested mode (Gauntlet or normal) and their turns and returns the
+     * derived statistics. Returns {@link Statistics#empty()} when there are no such games.
+     *
+     * @param gauntlet {@code true} to aggregate Gauntlet games, {@code false} for normal games
      */
-    public static Statistics compute(Database database) {
-        List<Game> games = database.gameDao().findAll();
+    public static Statistics compute(Database database, boolean gauntlet) {
+        List<Game> games = database.gameDao().findAll().stream()
+                .filter(game -> game.isGauntlet() == gauntlet)
+                .toList();
         if (games.isEmpty()) {
             return Statistics.empty();
         }

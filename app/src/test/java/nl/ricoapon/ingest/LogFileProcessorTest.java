@@ -40,7 +40,7 @@ class LogFileProcessorTest {
             assertInstanceOf(TrackerLoaded.class,
                     LogLine.parse(logLine("2026-08-08T22:11:51Z", "TrackerLoaded", "GameVersion=1 RunID=abc")));
             assertInstanceOf(GameStarted.class,
-                    LogLine.parse(logLine("2026-08-08T22:11:52Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120")));
+                    LogLine.parse(logLine("2026-08-08T22:11:52Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False")));
             assertInstanceOf(TurnStarted.class,
                     LogLine.parse(logLine("2026-08-08T22:11:53Z", "TurnStarted", "Turn=1 DeckSize=12")));
             assertInstanceOf(ResourcesChanged.class,
@@ -59,6 +59,17 @@ class LogFileProcessorTest {
             assertEquals(Instant.parse("2026-08-08T22:11:51.8407274Z"), trackerLoaded.timestamp());
             assertEquals(1, trackerLoaded.gameVersion());
             assertEquals("79467be7-476b-4ba7-9d08-d66c1eee54c6", trackerLoaded.runId());
+        }
+
+        @Test
+        void populatesGameStartedFields() {
+            GameStarted gameStarted = assertInstanceOf(GameStarted.class, LogLine.parse(logLine(
+                    "2026-08-08T22:11:52Z", "GameStarted",
+                    "Difficulty=3 Length=24 RequiredVoters=180 IsGauntlet=True")));
+            assertEquals(3, gameStarted.difficulty());
+            assertEquals(24, gameStarted.length());
+            assertEquals(180, gameStarted.requiredVoters());
+            assertTrue(gameStarted.isGauntlet());
         }
 
         @Test
@@ -145,14 +156,14 @@ class LogFileProcessorTest {
         private String onlyGameId() {
             List<Game> games = database.gameDao().findAll();
             assertEquals(1, games.size(), "expected exactly one game to have been created");
-            return games.get(0).getId();
+            return games.getFirst().getId();
         }
 
         @Test
         void recordsAFullGameFromStartToFinish() {
             feed(
                     logLine("2026-08-08T22:12:00Z", "TrackerLoaded", "GameVersion=1 RunID=run-1"),
-                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120"),
+                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False"),
                     logLine("2026-08-08T22:12:02Z", "TurnStarted", "Turn=1 DeckSize=12"),
                     logLine("2026-08-08T22:12:03Z", "ResourcesChanged", "Money=5 Power=0 Fame=0 Voters=0"),
                     logLine("2026-08-08T22:12:04Z", "ResourcesChanged", "Money=1 Power=0 Fame=0 Voters=2"),
@@ -178,14 +189,14 @@ class LogFileProcessorTest {
         void splitsResourceChangesIntoGainedAndSpent() {
             feed(
                     logLine("2026-08-08T22:12:00Z", "TrackerLoaded", "GameVersion=1 RunID=run-1"),
-                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120"),
+                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False"),
                     logLine("2026-08-08T22:12:02Z", "TurnStarted", "Turn=1 DeckSize=12"),
                     // Money climbs to 5 (gained 5), then drops to 2 (spent 3). Power climbs to 3. Voters climb to 4.
                     logLine("2026-08-08T22:12:03Z", "ResourcesChanged", "Money=5 Power=0 Fame=0 Voters=0"),
                     logLine("2026-08-08T22:12:04Z", "ResourcesChanged", "Money=2 Power=3 Fame=0 Voters=0"),
                     logLine("2026-08-08T22:12:05Z", "ResourcesChanged", "Money=2 Power=3 Fame=0 Voters=4"));
 
-            GameTurn turn = database.gameTurnDao().findByGameId(onlyGameId()).get(0);
+            GameTurn turn = database.gameTurnDao().findByGameId(onlyGameId()).getFirst();
             assertEquals(5, turn.getMoneyGained());
             assertEquals(3, turn.getMoneySpent());
             assertEquals(3, turn.getPowerGained());
@@ -198,7 +209,7 @@ class LogFileProcessorTest {
         void votersCarryAcrossTurnsWhileOtherResourcesResetEachTurn() {
             feed(
                     logLine("2026-08-08T22:12:00Z", "TrackerLoaded", "GameVersion=1 RunID=run-1"),
-                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120"),
+                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False"),
                     logLine("2026-08-08T22:12:02Z", "TurnStarted", "Turn=1 DeckSize=12"),
                     logLine("2026-08-08T22:12:03Z", "ResourcesChanged", "Money=4 Power=0 Fame=0 Voters=4"),
                     // New turn: money baseline resets to 0, but voters stay at 4.
@@ -219,7 +230,7 @@ class LogFileProcessorTest {
         void marksTheGameAsLostWhenGameEndSaysSo() {
             feed(
                     logLine("2026-08-08T22:12:00Z", "TrackerLoaded", "GameVersion=1 RunID=run-1"),
-                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120"),
+                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False"),
                     logLine("2026-08-08T22:12:02Z", "TurnStarted", "Turn=1 DeckSize=12"),
                     logLine("2026-08-08T22:12:03Z", "GameEnd", "Won=false Turns=1"));
 
@@ -244,7 +255,7 @@ class LogFileProcessorTest {
         void throwsWhenResourcesChangeBeforeAnyTurn() {
             assertThrows(LogProcessingException.class, () -> feed(
                     logLine("2026-08-08T22:12:00Z", "TrackerLoaded", "GameVersion=1 RunID=run-1"),
-                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120"),
+                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False"),
                     logLine("2026-08-08T22:12:02Z", "ResourcesChanged", "Money=1 Power=0 Fame=0 Voters=0")));
         }
 
@@ -259,7 +270,7 @@ class LogFileProcessorTest {
         void aFailingLineIsRolledBackAndLeavesTheDatabaseUntouched() {
             feed(
                     logLine("2026-08-08T22:12:00Z", "TrackerLoaded", "GameVersion=1 RunID=run-1"),
-                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120"),
+                    logLine("2026-08-08T22:12:01Z", "GameStarted", "Difficulty=1 Length=30 RequiredVoters=120 IsGauntlet=False"),
                     logLine("2026-08-08T22:12:02Z", "TurnStarted", "Turn=1 DeckSize=12"),
                     logLine("2026-08-08T22:12:03Z", "ResourcesChanged", "Money=3 Power=0 Fame=0 Voters=0"));
 
@@ -274,8 +285,8 @@ class LogFileProcessorTest {
             // game's endedAt was not advanced to the failed line.
             List<GameTurn> turns = database.gameTurnDao().findByGameId(gameId);
             assertEquals(1, turns.size());
-            assertEquals(3, turns.get(0).getMoneyGained());
-            assertEquals(12, turns.get(0).getStartingDeckSize());
+            assertEquals(3, turns.getFirst().getMoneyGained());
+            assertEquals(12, turns.getFirst().getStartingDeckSize());
             assertEquals(committedEndedAt, database.gameDao().findById(gameId).orElseThrow().getEndedAt());
         }
     }

@@ -16,8 +16,10 @@ import java.util.Optional;
 @RegisterBeanMapper(Game.class)
 public interface GameDao {
     @SqlUpdate("""
-            INSERT INTO game (id, run_id, finished, won, started_at, ended_at)
-            VALUES (:id, :runId, :finished, :won, :startedAt, :endedAt)
+            INSERT INTO game (id, run_id, finished, won, started_at, ended_at,
+                              difficulty, length, required_voters, gauntlet)
+            VALUES (:id, :runId, :finished, :won, :startedAt, :endedAt,
+                    :difficulty, :length, :requiredVoters, :gauntlet)
             """)
     void insert(@BindBean Game game);
 

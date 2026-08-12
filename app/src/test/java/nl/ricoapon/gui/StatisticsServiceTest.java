@@ -26,7 +26,7 @@ class StatisticsServiceTest {
 
     @Test
     void emptyDatabaseYieldsEmptyStatistics() {
-        Statistics stats = StatisticsService.compute(database);
+        Statistics stats = StatisticsService.compute(database, false);
         assertEquals(0, stats.totalGames());
         assertEquals(0, stats.won());
         assertEquals(0, stats.winRate());
@@ -59,7 +59,8 @@ class StatisticsServiceTest {
         // In-progress game (not finished) with no turns.
         database.gameDao().insert(new Game(UUID.randomUUID().toString(), "run-open", false, null, base.plusSeconds(3), null));
 
-        Statistics stats = StatisticsService.compute(database);
+        // These games are all normal (non-Gauntlet); compute for that mode aggregates exactly them.
+        Statistics stats = StatisticsService.compute(database, false);
 
         assertEquals(4, stats.totalGames());
         assertEquals(1, stats.inProgress());
@@ -81,5 +82,26 @@ class StatisticsServiceTest {
         assertEquals(34.0 / 6, stats.avgMoneyGainedPerTurn(), 1e-9);
         assertEquals(18.0 / 6, stats.avgNetMoneyPerTurn(), 1e-9);
         assertEquals(0.0, stats.avgNetPowerPerTurn(), 1e-9);
+    }
+
+    @Test
+    void separatesGauntletGamesFromNormalGames() {
+        Instant base = Instant.parse("2026-01-01T00:00:00Z");
+
+        // One normal won game and one Gauntlet won game.
+        Game normal = new Game(UUID.randomUUID().toString(), "run-normal", true, true, base, base.plusSeconds(60),
+                1, 30, 120, false);
+        database.gameDao().insert(normal);
+        Game gauntlet = new Game(UUID.randomUUID().toString(), "run-gauntlet", true, true, base.plusSeconds(1), base.plusSeconds(60),
+                1, 12, 40, true);
+        database.gameDao().insert(gauntlet);
+
+        Statistics normalStats = StatisticsService.compute(database, false);
+        assertEquals(1, normalStats.totalGames());
+        assertEquals("run-normal", normalStats.wonGames().getFirst().runId());
+
+        Statistics gauntletStats = StatisticsService.compute(database, true);
+        assertEquals(1, gauntletStats.totalGames());
+        assertEquals("run-gauntlet", gauntletStats.wonGames().getFirst().runId());
     }
 }

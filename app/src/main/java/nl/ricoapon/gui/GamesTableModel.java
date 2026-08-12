@@ -14,7 +14,8 @@ import java.util.List;
  * comes from the game's derived {@link Game#getNrOfTurns()}.
  */
 class GamesTableModel extends AbstractTableModel {
-    private static final String[] COLUMNS = {"Run", "Started", "Ended", "Finished", "Won", "Turns", "Duration"};
+    private static final String[] COLUMNS =
+            {"Run", "Difficulty", "Length", "Req. voters", "Started", "Ended", "Finished", "Won", "Turns", "Duration"};
     private static final DateTimeFormatter TIME_FORMAT =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss").withZone(ZoneId.systemDefault());
 
@@ -49,19 +50,26 @@ class GamesTableModel extends AbstractTableModel {
         Game game = games.get(rowIndex);
         return switch (columnIndex) {
             case 0 -> game.getRunId();
-            case 1 -> TIME_FORMAT.format(game.getStartedAt());
-            case 2 -> game.getEndedAt() == null ? "" : TIME_FORMAT.format(game.getEndedAt());
-            case 3 -> game.isFinished() ? "yes" : "no";
-            case 4 -> outcome(game);
-            case 5 -> game.getNrOfTurns();
-            case 6 -> duration(game.getStartedAt(), game.getEndedAt());
+            case 1 -> game.getDifficulty();
+            case 2 -> game.getLength();
+            case 3 -> game.getRequiredVoters();
+            case 4 -> TIME_FORMAT.format(game.getStartedAt());
+            case 5 -> game.getEndedAt() == null ? "" : TIME_FORMAT.format(game.getEndedAt());
+            case 6 -> game.isFinished() ? "yes" : "no";
+            case 7 -> outcome(game);
+            case 8 -> game.getNrOfTurns();
+            case 9 -> duration(game.getStartedAt(), game.getEndedAt());
             default -> "";
         };
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        return columnIndex == 5 ? Integer.class : String.class;
+        // Difficulty, Length, Req. voters and Turns are numeric; everything else renders as text.
+        return switch (columnIndex) {
+            case 1, 2, 3, 8 -> Integer.class;
+            default -> String.class;
+        };
     }
 
     private static String outcome(Game game) {
